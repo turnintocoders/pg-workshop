@@ -1,4 +1,5 @@
-module.exports = [{
+module.exports = [
+  {
         name: 'Emily',
         location: "London"
     },

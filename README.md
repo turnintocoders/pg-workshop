@@ -10,8 +10,8 @@ In this workshop we'll be building on what we learnt in the [pg walkthrough](htt
 
 1. Clone this repo
 1. Install the node_modules by typing `npm install` in your terminal.
-1. Run `npm run dev`in your terminal and checkout the result at http://localhost:5000. This is the starting template for what you'll be building.
-1. In `src/router.js` you'll find a function that deals with calls to the `/users` endpoint. The data is currently coming from the `static.js` file. Add your own name and location within `static.js`. Refresh the page & check the results.
+1. Run `npm run dev`in your terminal and checkout the result at http://localhost:3000. This is the starting template for what you'll be building.
+1. In `src/usersHandler.js` you'll find a function that deals with calls to the `/users` endpoint. The data is currently coming from the `static.js` file. Add your own name and location within `static.js`. Refresh the page & check the results.
 
 ### Task 1: Setting up the database
 
@@ -44,7 +44,7 @@ In the commented out form in `index.html` we have this HTML attribute: `action="
 1. Open up `index.html` and uncomment the form
 1. Check that you can see an empty input box when you refresh your browser
 1. Add a new endpoint to `router.js` (`/create-user`)
-1. Create a new handler function for the endpoint `create-user` in `router.js` that uses the data from your form to INSERT a new row into your users table. What kind of **method** do you think you'll need (check the HTML!)? How will you access the data from your form?
+1. Create a new handler function for the endpoint `create-user` and add it to `router.js` that uses the data from your form to INSERT a new row into your users table. What kind of **method** do you think you'll need (check the HTML!)? How will you access the data from your form?
 1. Give the users of your website some helpful feedback, so they know that their data has been successfully dealt with.
 
 ### Task 4: CSS Challenge
