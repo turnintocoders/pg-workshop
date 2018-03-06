@@ -16,7 +16,7 @@ function static(request, response) {
         response.writeHead(200, {
             "Content-Type": "text/" + fileType
         });
-          response.end(file);
+        response.end(file);
       }
   });
 }

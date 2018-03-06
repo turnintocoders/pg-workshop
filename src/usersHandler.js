@@ -1,12 +1,34 @@
-var users = require("./static.js");
+var db = require("./database/db_connection.js");
+var querystring = require("querystring");
 
-function usersHandler(request, response) {
-  // Replace the 3 lines below below with your own function that gets data from your database
-  var output = JSON.stringify(users);
-  response.writeHead(200, {
-      "Content-Type": "application/json"
+function index(request, response) {
+  db.query("SELECT * FROM users", function(err, result) {
+    if(err) {
+      response.writeHead(500);
+      return response.end();
+    }
+    response.writeHead(200, {
+        "Content-Type": "application/json"
+    });
+    response.end(JSON.stringify(result.rows));
   });
-  response.end(output);
 }
 
-module.exports = usersHandler;
+function create(request, response) {
+  var formData = "";
+  request.on("data", function(chunk) {
+    formData += chunk;
+  });
+  request.on("end", function() {
+    var parsedFormData = querystring.parse(formData);
+    db.query("INSERT INTO users (name, location) VALUES ($1, $2)",
+    [parsedFormData.name, parsedFormData.location],
+    function(err, result) {
+      response.writeHead(302, {"Location": "/"});
+      response.end();;
+    });
+  });
+}
+
+
+module.exports = {index: index, create: create};

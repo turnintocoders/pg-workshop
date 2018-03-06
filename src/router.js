@@ -8,7 +8,9 @@ function router(request, response) {
     if (endpoint === "/") {
         assetsHandler.index(request, response);
     } else if (endpoint === "/users") {
-        usersHandler(request, response);
+        usersHandler.index(request, response);
+    } else if (endpoint === "/user/create") {
+        usersHandler.create(request, response);
     } else {
         assetsHandler.static(request, response);
     }
